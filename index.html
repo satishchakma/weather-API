@@ -22,20 +22,58 @@
     <div class="container">
         <form class="col-md-6 m-auto py-5">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <input id="input" type="text" value="" class="form-control" placeholder="Enter a location for Weather ...">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-danger">Search</button>
+                    <button id="search" type="button" class="btn btn-danger">Search</button>
                 </div>
             </div>
         </form>
         <div class="weather-status text-white text-center">
             <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
-            <h1 class="lead">Clouds</h1>
+            <h1 id="cityName">Dhaka</h1>
+            <h3><span id="tempa">38.06</span>&deg;C</h3>
+            <h1 id="weatherC"class="lead">Clouds</h1>
         </div>
     </div>
 
+    <script>
+         
+        function API(){
+
+
+            let search = document.getElementById('search');
+            search.addEventListener('click', function(){
+                let input = document.getElementById('input');
+            let inputValue = input.value;
+            // console.log(inputValue);
+                let cityName = inputValue;
+                console.log('clicked');
+                // console.log(cityName);
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=9b41418ac8128df8ee796ae47ad00b56`
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+           
+            let showCity = document.getElementById('cityName');
+            showCity.innerText = cityName;
+
+            let temp = `${data.main.temp}`
+            let tempa = document.getElementById('tempa');
+            tempa.innerHTML = temp;
+
+            let weather = `${data.weather[0].description}`
+            let weatherC = document.getElementById('weatherC');
+            weatherC.innerHTML = weather;
+            console.log(data);
+               
+            });
+            
+            
+            })
+            
+        }
+        API();
+    </script>
 </body>
 
 </html>
