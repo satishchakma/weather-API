@@ -29,7 +29,7 @@
             </div>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <img id="imageid" src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
             <h1 id="cityName">Dhaka</h1>
             <h3><span id="tempa">38.06</span>&deg;C</h3>
             <h1 id="weatherC"class="lead">Clouds</h1>
@@ -65,6 +65,11 @@
             let weatherC = document.getElementById('weatherC');
             weatherC.innerHTML = weather;
             console.log(data);
+
+            let icon = `${data.weather[0].icon}`
+            let srcu = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+            console.log(icon);
+            document.getElementById("imageid").src=`${srcu}`;
                
             });
             
