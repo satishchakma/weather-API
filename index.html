@@ -49,7 +49,7 @@
                 let cityName = inputValue;
                 console.log('clicked');
                 // console.log(cityName);
-                const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=9b41418ac8128df8ee796ae47ad00b56`
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=9b41418ac8128df8ee796ae47ad00b56&units=metric`
             fetch(url)
             .then(res => res.json())
             .then(data => {
